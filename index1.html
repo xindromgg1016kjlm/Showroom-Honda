@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom Honda - Layanan Cicilan Kendaraan Leasing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/294/2023/11/02/Logo-motor-Honda-894916867.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: rgba(211, 47, 47, 0.8);
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .navbar a:hover {
+            background-color: rgba(198, 40, 40, 0.8);
+        }
+        .navbar a.active {
+            background-color: rgba(183, 28, 28, 0.8);
+        }
+        .content {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            margin: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 20px auto;
+            flex-grow: 1;
+        }
+        .content.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #c62828;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a onclick="showContent('home')" class="active">Beranda</a>
+    <a onclick="showContent('models')">Model Kendaraan</a>
+    <a onclick="showContent('leasing')">Layanan Leasing</a>
+    <a onclick="showContent('contact')">Kontak</a>
+</div>
+
+<div class="content active" id="home">
+    <h1>Selamat Datang di Showroom Honda</h1>
+    <p>Di sini Anda dapat menemukan berbagai model kendaraan Honda dan layanan cicilan kendaraan leasing yang kami tawarkan.</p>
+</div>
+
+<div class="content" id="models">
+    <h2>Model Kendaraan</h2>
+    <p>Temukan berbagai model kendaraan Honda yang tersedia di showroom kami.</p>
+    <div class="image-container">
+        <img src="download (2).jpg" alt="Model Kendaraan Honda"style="width: 250px; height: 200px;">
+        <p>HONDA BEAT 125</p>
+
+        <img src="OIP.jpg" alt="Model Kendaraan Honda"style="width: 250px; height: 200px;">
+        <p>HONDA VARIO 125</p>
+        
+    </div>
+</div>
+
+<div class="content" id="leasing">
+    <h2>Layanan Leasing</h2>
+    <p>Pelajari lebih lanjut tentang opsi cicilan kendaraan leasing yang kami tawarkan.</p>
+    <div class="form-container" id="form-pendaftaran">
+        <h2>Pendaftaran Pembelian Motor Honda</h2>
+        <form action="/submit-pendaftaran" method="post">
+            <div class="form-group">
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            <div class="form-group">
+                <label for="alamat">Alamat:</label>
+                <input type="text" id="alamat" name="alamat" required>
+            </div>
+            <div class="form-group">
+                <label for="telepon">Nomor Telepon:</label>
+                <input type="tel" id="telepon" name="telepon" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="model">Model Motor yang Diinginkan:</label>
+                <select id="model" name="model" required>
+                    <option value="vario">Honda Vario</option>
+                    <option value="beat">Honda Beat</option>
+                    <option value="pcx">Honda PCX</option>
+                    <option value="cbr">Honda CBR</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pembayaran">Metode Pembayaran:</label>
+                <select id="pembayaran" name="pembayaran" required>
+                    
+                    <option value="credit">Kredit</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Daftar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="content" id="contact">
+    <h2>Kontak</h2>
+    <p>Hubungi kami untuk informasi lebih lanjut atau untuk membuat janji temu.</p>
+    <p><strong>Honda</strong></p>
+    <p>Telepon: <a href="tel:082371116161">082371116161</a></p>
+</div>
+
+<script>
+    function showContent(sectionId) {
+        // Hide all content sections
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(content => {
+            content.classList.remove('active');
+        });
+
+        // Show the selected content section
+        const selectedContent = document.getElementById(sectionId);
+        selectedContent.classList.add('active');
+
+        // Remove active class from all navbar links
+        const navLinks = document.querySelectorAll('.navbar a');
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Add active class to the clicked navbar link
+        const activeLink = Array.from(navLinks).find(link => link.textContent.toLowerCase().includes(sectionId));
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
